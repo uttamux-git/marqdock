@@ -1,0 +1,50 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@import 'shadcn/tailwind.css';
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-border: var(--border);
+  --color-ring: var(--ring);
+}
+
+:root {
+  --background: #07151d;
+  --foreground: #edf7f7;
+  --border: rgba(255,255,255,.12);
+  --ring: #9ce7d2;
+}
+
+* { box-sizing: border-box; }
+html, body { min-height: 100%; }
+body { margin: 0; background: var(--background); color: var(--foreground); font-family: Arial, Helvetica, sans-serif; }
+button { font: inherit; }
+
+.fish-page { min-height: 100vh; overflow: hidden; position: relative; padding: 34px 5.5vw 28px; display: flex; flex-direction: column; background: radial-gradient(circle at 51% 48%, #173b45 0%, #0c242e 28%, #07151d 69%); }
+.fish-page::before { content: ''; position: absolute; inset: 0; opacity: .2; pointer-events: none; background-image: linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px); background-size: 64px 64px; mask-image: linear-gradient(to bottom, transparent, black 20%, black 80%, transparent); }
+.ambient { position: absolute; border-radius: 999px; filter: blur(1px); opacity: .2; pointer-events: none; }
+.ambient-one { width: 360px; height: 360px; top: 18%; left: 11%; background: #2b9b8a; filter: blur(100px); }
+.ambient-two { width: 320px; height: 320px; right: 5%; bottom: 10%; background: #3a70a9; filter: blur(110px); }
+.topbar, .footer { position: relative; z-index: 1; display: flex; align-items: center; justify-content: space-between; color: #8ea8ad; font-size: 11px; letter-spacing: .12em; text-transform: uppercase; }
+.brand { display: flex; align-items: center; gap: 8px; color: #ecfffa; font-size: 15px; font-weight: 700; letter-spacing: -.02em; text-transform: lowercase; }
+.brand svg { color: #9ce7d2; }
+.topbar-note { opacity: .65; }
+.hero { position: relative; z-index: 1; max-width: 480px; margin: auto auto 80px; align-self: center; text-align: center; }
+.eyebrow { margin: 0 0 18px; color: #9ce7d2; font-size: 10px; font-weight: 700; letter-spacing: .24em; }
+h1 { margin: 0; color: #f2fffe; font-size: clamp(48px, 8vw, 92px); line-height: .92; letter-spacing: -.075em; font-weight: 500; }
+.intro { max-width: 325px; margin: 24px auto 0; color: #9bb5b8; font-size: 14px; line-height: 1.65; }
+.dock-wrap { position: relative; z-index: 2; align-self: center; text-align: center; }
+.dock { display: flex; align-items: flex-end; gap: 10px; padding: 13px 15px 12px; border: 1px solid rgba(255,255,255,.13); border-radius: 24px; background: rgba(13, 32, 40, .72); box-shadow: 0 20px 55px rgba(0,0,0,.3), inset 0 1px rgba(255,255,255,.09); backdrop-filter: blur(18px); }
+.dock-item { width: 62px; padding: 0; border: 0; color: #729097; background: transparent; cursor: pointer; transition: transform .28s cubic-bezier(.2,.8,.2,1), color .2s ease; transform: translateY(calc((1 - var(--item-scale)) * -15px)) scale(var(--item-scale)); transform-origin: bottom center; }
+.dock-item:hover, .dock-item:focus-visible { color: var(--item-color); outline: none; }
+.icon-bubble { display: grid; place-items: center; width: 54px; height: 54px; margin: 0 auto 8px; border: 1px solid rgba(255,255,255,.08); border-radius: 18px; background: rgba(255,255,255,.05); transition: background .25s ease, box-shadow .25s ease; }
+.dock-item:hover .icon-bubble, .dock-item:focus-visible .icon-bubble, .dock-item.is-active .icon-bubble { background: color-mix(in srgb, var(--item-color) 18%, transparent); box-shadow: 0 0 24px color-mix(in srgb, var(--item-color) 25%, transparent); }
+.item-label { display: block; font-size: 10px; letter-spacing: .02em; white-space: nowrap; }
+.dock-hint { margin: 15px 0 0; color: #648087; font-size: 11px; letter-spacing: .05em; }
+.dock-hint span { color: #9ce7d2; margin-left: 5px; }
+.footer { margin-top: auto; opacity: .68; }
+.footer-line { width: 42px; height: 1px; background: #65828a; }
+@media (max-width: 560px) { .fish-page { padding: 24px 18px; } .topbar-note { display: none; } .hero { margin-bottom: 64px; } .dock { gap: 1px; padding-inline: 8px; } .dock-item { width: 51px; } .icon-bubble { width: 45px; height: 45px; border-radius: 15px; } .icon-bubble svg { width: 19px; } .item-label { font-size: 9px; } }
